@@ -179,11 +179,11 @@ SRC_BONUS = src_bonus/main_bonus.c ${SRC_FILES_BONUS}
 OBJ_BONUS = $(SRC_BONUS:%.c=${OBJ_DIR_BONUS}/%.o)
 
 bonus :$(NAME_BONUS)
-	@$(call cyan,"Compilation done !")
+	@$(call cyan,"Compilation bonus done !")
 
 $(NAME_BONUS): $(OBJ_BONUS) $(LIBFT) ${MLX_LIB}
 	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) ${MLX_EXEC} -o $(NAME_BONUS)
-	@$(call cyan,"Creating so_long...")
+	@$(call cyan,"Creating so_long_bonus...")
 
 $(OBJ_DIR_BONUS)/%.o: %.c
 	@mkdir -p $(dir $@)
