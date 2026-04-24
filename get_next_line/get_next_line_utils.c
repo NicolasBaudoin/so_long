@@ -1,0 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nbaudoin <nbaudoin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/20 17:20:45 by nbaudoin          #+#    #+#             */
+/*   Updated: 2026/04/20 11:37:51 by nbaudoin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+int	ft_strlen_gnl(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_check_and_find_eol(char *stash)
+{
+	int	i;
+
+	i = 0;
+	if (!stash)
+		return (-1);
+	while (stash[i])
+	{
+		if (stash[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+char	*ft_subs_gnl(char *s, int start, int len)
+{
+	int		i;
+	char	*str;
+	int		s_len;
+
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen_gnl(s);
+	if (start >= s_len)
+		len = 0;
+	else if (len > s_len - start)
+		len = s_len - start;
+	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_strjoin_gnl(char **stash, char *buffer)
+{
+	char	*new;
+	int		i;
+	int		k;
+
+	if (!buffer)
+		return (NULL);
+	if (!*stash)
+	{
+		*stash = malloc(1);
+		if (!*stash)
+			return (NULL);
+		(*stash)[0] = '\0';
+	}
+	new = malloc(ft_strlen_gnl(*stash) + ft_strlen_gnl(buffer) + 1);
+	if (!new)
+		return (NULL);
+	i = -1;
+	while ((*stash)[++i])
+		new[i] = (*stash)[i];
+	k = -1;
+	while (buffer[++k])
+		new[i + k] = buffer[k];
+	new[i + k] = '\0';
+	free(*stash);
+	return (new);
+}
