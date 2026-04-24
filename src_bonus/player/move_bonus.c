@@ -6,7 +6,7 @@
 /*   By: nbaudoin <nbaudoin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 07:43:18 by nbaudoin          #+#    #+#             */
-/*   Updated: 2026/04/23 19:08:24 by nbaudoin         ###   ########.fr       */
+/*   Updated: 2026/04/24 12:33:56 by nbaudoin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_player( t_data *data, int dx, int dy)
 		data->collectibles.collected_counter++;
 	}
 	if (handle_exit_condition(data, data->map.full_map[new_x][new_y])
-		 && data->map.full_map[new_x][new_y] == EXIT_MAP )
+		&& data->map.full_map[new_x][new_y] == EXIT_MAP)
 		return ;
 	draw_map(data);
 	data->player.pos_x = new_x;
