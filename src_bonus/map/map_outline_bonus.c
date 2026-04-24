@@ -6,7 +6,7 @@
 /*   By: nbaudoin <nbaudoin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 08:27:33 by nbaudoin          #+#    #+#             */
-/*   Updated: 2026/04/23 18:04:38 by nbaudoin         ###   ########.fr       */
+/*   Updated: 2026/04/24 14:43:42 by nbaudoin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	map_not_enclosed_by_wall(t_data *data)
 		y = 0;
 		while (data->map.full_map[x][y])
 		{
-			if (x == 0 && ft_first_line_check(data->map.full_map[x][y]))
+			if (x == 0 && ft_first_line_check(data->map.full_map[x][y], data))
 				return (1);
 			if (x == data->map.height - 1
-				&& ft_last_line_check(data->map.full_map[x][y], x))
+				&& ft_last_line_check(data->map.full_map[x][y], x, data))
 				return (1);
 			y++;
 		}
@@ -40,17 +40,18 @@ int	map_not_enclosed_by_wall(t_data *data)
 	return (0);
 }
 
-int	ft_first_line_check(char tile)
+int	ft_first_line_check(char tile, t_data *data)
 {
 	if (tile != WALL_MAP)
 	{
 		display_error("Map is not enclosed by walls at line 1");
+		free_all(data);
 		return (1);
 	}
 	return (0);
 }
 
-int	ft_last_line_check(char tile, int x)
+int	ft_last_line_check(char tile, int x, t_data *data)
 {
 	if (tile != WALL_MAP)
 	{
@@ -58,6 +59,7 @@ int	ft_last_line_check(char tile, int x)
 		ft_putstr_fd("Map is not enclosed by walls at line ", 2);
 		ft_putnbr_fd(x + 1, 2);
 		ft_putchar_fd('\n', 2);
+		free_all(data);
 		return (1);
 	}
 	return (0);

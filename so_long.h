@@ -6,7 +6,7 @@
 /*   By: nbaudoin <nbaudoin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 12:20:43 by nbaudoin          #+#    #+#             */
-/*   Updated: 2026/04/23 18:18:21 by nbaudoin         ###   ########.fr       */
+/*   Updated: 2026/04/24 14:42:15 by nbaudoin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,8 +201,8 @@ int		ft_get_height(char **map);
 int		ft_get_width(char *line);
 int		map_not_rectangle_or_too_big(t_data *data);
 int		map_not_enclosed_by_wall(t_data *data);
-int		ft_first_line_check(char tile);
-int		ft_last_line_check(char tile, int x);
+int		ft_first_line_check(char tile, t_data *data);
+int		ft_last_line_check(char tile, int x, t_data *data);
 int		ft_check_body_lines(char *line, t_data *data, int x);
 char	**copy_map(char **map, int height);
 
