@@ -6,7 +6,7 @@
 /*   By: nbaudoin <nbaudoin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:13:59 by nbaudoin          #+#    #+#             */
-/*   Updated: 2026/04/23 19:58:24 by nbaudoin         ###   ########.fr       */
+/*   Updated: 2026/04/24 14:52:08 by nbaudoin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int	map_not_rectangle_or_too_big(t_data *data)
 		}
 		i++;
 	}
-	if (data->map.width > data->max_width
-		|| data->map.height > data->max_height)
+	if (data->map.width > data->max_width / TILE_SIZE
+		|| data->map.height > data->max_height / TILE_SIZE)
 	{
 		display_error("Map is too big.");
 		free_all(data);
