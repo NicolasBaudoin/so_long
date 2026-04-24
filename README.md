@@ -42,7 +42,7 @@ This project introduces:
 **1. Clone the repository**
 
 ```bash
-git clone [vogsphere_link] [custom_name]
+git clone [vogsphere_link] [directory_custom_name]
 ```
 
 **2. Enter the directory**
