@@ -6,7 +6,7 @@
 /*   By: nbaudoin <nbaudoin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 07:43:18 by nbaudoin          #+#    #+#             */
-/*   Updated: 2026/04/24 12:33:56 by nbaudoin         ###   ########.fr       */
+/*   Updated: 2026/04/24 14:37:55 by nbaudoin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	handle_exit_condition(t_data *data, char tile)
 	if (data->collectibles.collected_counter
 		== data->collectibles.max_to_collect && tile == EXIT_MAP)
 	{
+		ft_putstr_fd("Moves : ", 1);
+		ft_putnbr_fd(data->player.counter_move + 1, 1);
+		ft_putchar_fd('\n', 1);
 		ft_putstr_fd("YOU WIN\n", 1);
 		free_all(data);
 		exit(0);
